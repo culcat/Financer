@@ -5,21 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0f0484e-4710-4ca5-b861-9c7f7587986a" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/FinancerApp/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/migrations/0002_alter_user_options_remove_user_unique_username_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/migrations/0003_alter_user_balance.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FinancerApp/migrations/0004_category_expense_income_delete_user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/create_expense.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/create_income.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/include/head.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Financer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Financer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Financer/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Financer/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Financer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Financer/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FinancerApp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinancerApp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FinancerApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FinancerApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FinancerApp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FinancerApp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FinancerApp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FinancerApp/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FinancerApp/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FinancerApp/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -56,6 +61,7 @@
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
     "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
@@ -77,7 +83,6 @@
         <env name="DJANGO_SETTINGS_MODULE" value="Financer.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.10 (Financer)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -97,7 +102,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+        <option value="bundled-python-sdk-67fca87a943a-c986f194a52a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.11799.259" />
       </set>
     </attachedChunks>
   </component>
@@ -111,6 +116,7 @@
       <updated>1708602991206</updated>
       <workItem from="1708603024482" duration="81000" />
       <workItem from="1708603149551" duration="3361000" />
+      <workItem from="1708617067711" duration="12450000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />

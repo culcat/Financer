@@ -16,7 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from FinancerApp.views import *
+from django.contrib.auth import views as auth_views
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', auth_views.LoginView.as_view(template_name='FinancerApp/login.html'), name='login'),
+    path('signin/', register_view, name='register'),
+    path('logout/', logout_view, name='logout'),
+    path('income/add',create_income,name='create_income'),
+    path('expose/add',create_expense, name='create_expense'),
+    path('', profile, name='profile'),
+    # path('', main_view, name='main_view')
 ]

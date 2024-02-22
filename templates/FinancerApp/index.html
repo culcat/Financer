@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% include 'include/head.html' %}
+{% block content %}
+ <div class="container mt-5">
+    <h1 class="text-center">Транзакции по дням</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Доходы</th>
+                    <th>Расходы</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for date, transactions in transactions_per_day.items %}
+                <tr>
+                    <td>{{ date }}</td>
+                    <td>{{ transactions.income }}</td>
+                    <td>{{ transactions.expense }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
-</body>
-</html>
+{% endblock %}

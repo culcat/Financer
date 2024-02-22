@@ -1,0 +1,175 @@
+{% include 'include/head.html' %}
+
+<div class="container mt-5">
+    <h1 class="text-center">Профиль пользователя {{ user.username }}</h1>
+    
+    <!-- Кнопки для переключения -->
+    <div class="text-center mt-4 mb-3">
+        <button class="btn btn-primary mb-2 mb-md-0 mr-md-2" id="toggleMonthTransactions">Транзакции по месяцам</button>
+        <button class="btn btn-primary mb-2 mb-md-0 mr-md-2" id="toggleDayTransactions">Транзакции по дням</button>
+        <button class="btn btn-primary mb-2 mb-md-0 mr-md-2" id="toggleMonthChart">Диаграмма по месяцам</button>
+        <button class="btn btn-primary mb-2 mb-md-0" id="toggleYearChart">Диаграмма по годам</button>
+    </div>
+    
+    <!-- Блоки с информацией -->
+    <div id="monthTransactions" style="display: none;">
+        <h2 class="text-center">Доходы и расходы по месяцам</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Месяц</th>
+                        <th>Доходы</th>
+                        <th>Расходы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for month, transactions in transactions_per_month.items %}
+                    <tr>
+                        <td>{{ month|date:"F Y" }}</td>
+                        <td>{{ transactions.income }}</td>
+                        <td>{{ transactions.expense }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="dayTransactions" style="display: none;">
+        <h2 class="text-center">Транзакции по дням</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Доходы</th>
+                        <th>Расходы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for date, transactions in transactions_per_day.items %}
+                    <tr>
+                        <td>{{ date }}</td>
+                        <td>{{ transactions.income }}</td>
+                        <td>{{ transactions.expense }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="monthChart" style="display: none;">
+        <h2 class="text-center">Диаграмма по месяцам</h2>
+        <canvas id="monthChartCanvas"></canvas>
+    </div>
+    
+    <div id="yearChart" style="display: none;">
+        <h2 class="text-center">Диаграмма по годам</h2>
+        <canvas id="yearChartCanvas"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // JavaScript для переключения между блоками информации
+    document.getElementById("toggleMonthTransactions").addEventListener("click", function() {
+        document.getElementById("monthTransactions").style.display = "block";
+        document.getElementById("dayTransactions").style.display = "none";
+        document.getElementById("monthChart").style.display = "none";
+        document.getElementById("yearChart").style.display = "none";
+    });
+
+    document.getElementById("toggleDayTransactions").addEventListener("click", function() {
+        document.getElementById("monthTransactions").style.display = "none";
+        document.getElementById("dayTransactions").style.display = "block";
+        document.getElementById("monthChart").style.display = "none";
+        document.getElementById("yearChart").style.display = "none";
+    });
+
+    document.getElementById("toggleMonthChart").addEventListener("click", function() {
+        document.getElementById("monthTransactions").style.display = "none";
+        document.getElementById("dayTransactions").style.display = "none";
+        document.getElementById("monthChart").style.display = "block";
+        document.getElementById("yearChart").style.display = "none";
+
+        // Генерация диаграммы по месяцам
+        var ctx = document.getElementById('monthChartCanvas').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{% for month, transactions in transactions_per_month.items %}'{{ month|date:"F Y" }}',{% endfor %}],
+                datasets: [{
+                    label: 'Доходы',
+                    data: [{% for month, transactions in transactions_per_month.items %}{{ transactions.income }},{% endfor %}],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Расходы',
+                    data: [{% for month, transactions in transactions_per_month.items %}{{ transactions.expense }},{% endfor %}],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+
+    document.getElementById("toggleYearChart").addEventListener("click", function() {
+        document.getElementById("monthTransactions").style.display = "none";
+        document.getElementById("dayTransactions").style.display = "none";
+        document.getElementById("monthChart").style.display = "none";
+        document.getElementById("yearChart").style.display = "block";
+
+        // Генерация диаграммы по годам
+        var ctx = document.getElementById('yearChartCanvas').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [{% for year, transactions in transactions_per_year.items %}'{{ year }}',{% endfor %}],
+                datasets: [{
+                    label: 'Доходы',
+                    data: [{% for year, transactions in transactions_per_year.items %}{{ transactions.income }},{% endfor %}],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Расходы',
+                    data: [{% for year, transactions in transactions_per_year.items %}{{ transactions.expense }},{% endfor %}],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+
+    // JavaScript для адаптивности
+    var screenWidth = window.innerWidth;
+    if (screenWidth < 576) {
+        document.querySelectorAll('.btn').forEach(function(btn) {
+            btn.classList.remove('mb-2', 'mb-md-0', 'mr-md-2');
+            btn.classList.add('mb-2', 'mr-2');
+        });
+    }
+</script>
