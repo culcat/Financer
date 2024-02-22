@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0f0484e-4710-4ca5-b861-9c7f7587986a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Financer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Financer/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Financer/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Financer/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Financer/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Financer/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+    <list default="true" id="b0f0484e-4710-4ca5-b861-9c7f7587986a" name="Changes" comment="Init">
+      <change afterPath="$PROJECT_DIR$/FinancerApp/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FinancerApp/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FinancerApp/migrations/0002_alter_user_options_remove_user_unique_username_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FinancerApp/migrations/0003_alter_user_balance.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Financer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Financer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Financer/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Financer/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinancerApp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinancerApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinancerApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,17 +41,27 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2cimtshZKgYWQ0hvYftSe4ZMmja" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.Financer.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
     "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -58,8 +74,10 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="Financer.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.10 (Financer)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -92,11 +110,25 @@
       <option name="presentableId" value="Default" />
       <updated>1708602991206</updated>
       <workItem from="1708603024482" duration="81000" />
-      <workItem from="1708603149551" duration="28000" />
+      <workItem from="1708603149551" duration="3361000" />
     </task>
+    <task id="LOCAL-00001" summary="Init">
+      <option name="closed" value="true" />
+      <created>1708603204843</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708603204843</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Init" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init" />
   </component>
 </project>
