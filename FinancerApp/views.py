@@ -4,7 +4,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.db.models.functions import TruncMonth
+from django.db.models.functions import TruncMonth, TruncYear, TruncDay
 from django.shortcuts import render, redirect
 from django.db.models import Sum
 from FinancerApp.forms import SignUpForm, IncomeForm, ExpenseForm
@@ -67,9 +67,13 @@ def profile(request):
     if request.user.is_authenticated:
         # Пользователь аутентифицирован, можно продолжать
         if request.method == 'GET':
+            # Получаем транзакции пользователя отсортированные по дням
+            transactions_history = get_transactions_history(request.user)
+
             # По умолчанию отображаем транзакции по месяцам
             transactions_per_month = get_transactions_per_month(request.user)
             transactions_per_day = None
+            transactions_per_year = get_transactions_per_year(request.user)
 
         elif request.method == 'POST':
             if 'toggle' in request.POST:
@@ -77,11 +81,18 @@ def profile(request):
                 if request.POST['toggle'] == 'month':
                     transactions_per_month = get_transactions_per_month(request.user)
                     transactions_per_day = None
+                    transactions_per_year = get_transactions_per_year(request.user)
                 elif request.POST['toggle'] == 'day':
                     transactions_per_day = get_transactions_per_day(request.user)
                     transactions_per_month = None
+                    transactions_per_year = None
 
-        return render(request, 'FinancerApp/profile.html', {'transactions_per_month': transactions_per_month, 'transactions_per_day': transactions_per_day})
+        return render(request, 'FinancerApp/profile.html', {
+            'transactions_per_month': transactions_per_month,
+            'transactions_per_day': transactions_per_day,
+            'transactions_per_year': transactions_per_year,
+            'transactions_history': transactions_history
+        })
     else:
         # Пользователь не аутентифицирован, перенаправляем на страницу входа
         return redirect('login')
@@ -106,8 +117,10 @@ def get_transactions_per_month(user):
 
 def get_transactions_per_day(user):
     # Получаем сумму доходов и расходов за каждый день
-    incomes_per_day = Income.objects.filter(user=user).values('date').annotate(total_amount=Sum('amount'))
-    expenses_per_day = Expense.objects.filter(user=user).values('date').annotate(total_amount=Sum('amount'))
+    incomes_per_day = Income.objects.filter(user=user).annotate(month=TruncDay('date')).values('day').annotate(
+        total_amount=Sum('amount'))
+    expenses_per_day = Expense.objects.filter(user=user).annotate(month=TruncDay('date')).values('day').annotate(
+        total_amount=Sum('amount'))
 
     # Создаем словарь, в котором ключами будут даты, а значениями будут суммы доходов и расходов за каждый день
     transactions_per_day = {}
@@ -121,6 +134,40 @@ def get_transactions_per_day(user):
             transactions_per_day[expense['date']] = {'income': 0, 'expense': expense['total_amount']}
 
     return transactions_per_day
+def get_transactions_per_year(user):
+    # Получаем сумму доходов и расходов за каждый год
+    incomes_per_year = Income.objects.filter(user=user).annotate(year=TruncYear('date')).values('year').annotate(total_amount=Sum('amount'))
+    expenses_per_year = Expense.objects.filter(user=user).annotate(year=TruncYear('date')).values('year').annotate(total_amount=Sum('amount'))
+
+    # Создаем словарь, в котором ключами будут годы, а значениями будут суммы доходов и расходов за каждый год
+    transactions_per_year = {}
+    for income in incomes_per_year:
+        transactions_per_year[income['year']] = {'income': income['total_amount'], 'expense': 0}
+
+    for expense in expenses_per_year:
+        if expense['year'] in transactions_per_year:
+            transactions_per_year[expense['year']]['expense'] = expense['total_amount']
+        else:
+            transactions_per_year[expense['year']] = {'income': 0, 'expense': expense['total_amount']}
+
+    return transactions_per_year
+
+def get_transactions_history(user):
+    # Получаем все транзакции пользователя отсортированные по дням
+    incomes = Income.objects.filter(user=user).order_by('date')
+    expenses = Expense.objects.filter(user=user).order_by('date')
+
+    # Добавляем метку "Тип" к каждой транзакции
+    for income in incomes:
+        income.type = 'Доход'
+    for expense in expenses:
+        expense.type = 'Расход'
+
+    # Слияние доходов и расходов в один список и сортировка по дате
+    transactions_history = list(incomes) + list(expenses)
+    transactions_history.sort(key=lambda x: x.date)
+
+    return transactions_history
 
 def create_income(request):
     if request.method == 'POST':
