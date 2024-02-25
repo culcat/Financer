@@ -13,7 +13,7 @@ class SignUpForm(UserCreationForm):
 class IncomeForm(forms.ModelForm):
     class Meta:
         model = Income
-        fields = ['amount', 'category']
+        fields = ['amount']
 
 class ExpenseForm(forms.ModelForm):
     class Meta:

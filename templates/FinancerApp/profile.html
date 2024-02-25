@@ -9,6 +9,8 @@
         <button class="btn btn-primary mb-2 mb-md-0 mr-md-2" id="toggleDayTransactions">Транзакции по дням</button>
         <button class="btn btn-primary mb-2 mb-md-0 mr-md-2" id="toggleMonthChart">Диаграмма по месяцам</button>
         <button class="btn btn-primary mb-2 mb-md-0" id="toggleYearChart">Диаграмма по годам</button>
+        <button class="btn btn-primary mb-2 mb-md-0" id="toggleHistory">История</button>
+                
     </div>
     
     <!-- Блоки с информацией -->
@@ -48,7 +50,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for date, transactions in transactions_per_day.items %}
+                    {% for date, transactions in transactions_per_day %}
                     <tr>
                         <td>{{ date }}</td>
                         <td>{{ transactions.income }}</td>
@@ -59,7 +61,33 @@
             </table>
         </div>
     </div>
-    
+    <div id="transactionsHistory" style="display: none;">
+    <h2 class="text-center">История транзакций</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Тип</th>
+                    <th>Категория</th>
+                    <th>Сумма</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions_history %}
+                <tr>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.type }}</td>
+                    <td>{{ transaction.category }}</td> <!-- Предполагая, что у вас есть поле category в модели транзакции -->
+                    <td>{{ transaction.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
     <div id="monthChart" style="display: none;">
         <h2 class="text-center">Диаграмма по месяцам</h2>
         <canvas id="monthChartCanvas"></canvas>
@@ -79,6 +107,8 @@
         document.getElementById("dayTransactions").style.display = "none";
         document.getElementById("monthChart").style.display = "none";
         document.getElementById("yearChart").style.display = "none";
+        document.getElementById('transactionsHistory').style.display = 'none'
+        
     });
 
     document.getElementById("toggleDayTransactions").addEventListener("click", function() {
@@ -86,13 +116,22 @@
         document.getElementById("dayTransactions").style.display = "block";
         document.getElementById("monthChart").style.display = "none";
         document.getElementById("yearChart").style.display = "none";
+        document.getElementById('transactionsHistory').style.display = 'none'
+        
     });
-
+   document.getElementById("toggleHistory").addEventListener("click", function() {
+        document.getElementById("monthTransactions").style.display = "none";
+        document.getElementById("dayTransactions").style.display = "none";
+        document.getElementById("monthChart").style.display = "none";
+        document.getElementById("yearChart").style.display = "none";
+        document.getElementById('transactionsHistory').style.display = 'block'
+    });
     document.getElementById("toggleMonthChart").addEventListener("click", function() {
         document.getElementById("monthTransactions").style.display = "none";
         document.getElementById("dayTransactions").style.display = "none";
         document.getElementById("monthChart").style.display = "block";
         document.getElementById("yearChart").style.display = "none";
+        document.getElementById('transactionsHistory').style.display = 'none'
 
         // Генерация диаграммы по месяцам
         var ctx = document.getElementById('monthChartCanvas').getContext('2d');
@@ -131,6 +170,8 @@
         document.getElementById("dayTransactions").style.display = "none";
         document.getElementById("monthChart").style.display = "none";
         document.getElementById("yearChart").style.display = "block";
+        document.getElementById('transactionsHistory').style.display = 'none'
+        
 
         // Генерация диаграммы по годам
         var ctx = document.getElementById('yearChartCanvas').getContext('2d');
