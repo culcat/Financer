@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0f0484e-4710-4ca5-b861-9c7f7587986a" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FinancerApp/migrations/0004_category_expense_income_delete_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/create_expense.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/create_income.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/FinancerApp/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/include/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Financer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Financer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Financer/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Financer/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Financer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Financer/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinancerApp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinancerApp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinancerApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinancerApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancerApp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/FinancerApp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FinancerApp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/FinancerApp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FinancerApp/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/FinancerApp/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FinancerApp/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,25 +35,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.Financer.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.Financer.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Financer" type="Python.DjangoServer" factoryName="Django server">
       <module name="Financer" />
@@ -116,7 +98,10 @@
       <updated>1708602991206</updated>
       <workItem from="1708603024482" duration="81000" />
       <workItem from="1708603149551" duration="3361000" />
-      <workItem from="1708617067711" duration="12450000" />
+      <workItem from="1708617067711" duration="13849000" />
+      <workItem from="1708803564645" duration="88000" />
+      <workItem from="1708806711889" duration="611000" />
+      <workItem from="1708859104336" duration="342000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -126,7 +111,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708603204843</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Init">
+      <option name="closed" value="true" />
+      <created>1708634426854</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708634426854</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
