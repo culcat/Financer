@@ -1,6 +1,4 @@
-from itertools import chain
 
-from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
@@ -9,9 +7,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Sum
 from FinancerApp.forms import SignUpForm, IncomeForm, ExpenseForm
 from FinancerApp.models import Income, Expense
-from collections import defaultdict
 
-# Create your views here.
+
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
@@ -21,7 +18,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('profile')
+                return redirect('/')
     else:
         form = AuthenticationForm()
     return render(request, 'FinancerApp/login.html', {'form': form})
@@ -44,23 +41,7 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
-# @login_required(login_url='login')
-# def main_view(request):
-#     incomes_per_day = Income.objects.filter(user=request.user).values('date').annotate(total_amount=Sum('amount'))
-#     expenses_per_day = Expense.objects.filter(user=request.user).values('date').annotate(total_amount=Sum('amount'))
-#
-#     # Создаем словарь, в котором ключами будут даты, а значениями будут суммы доходов и расходов за каждый день
-#     transactions_per_day = {}
-#     for income in incomes_per_day:
-#         transactions_per_day[income['date']] = {'income': income['total_amount'], 'expense': 0}
-#
-#     for expense in expenses_per_day:
-#         if expense['date'] in transactions_per_day:
-#             transactions_per_day[expense['date']]['expense'] = expense['total_amount']
-#         else:
-#             transactions_per_day[expense['date']] = {'income': 0, 'expense': expense['total_amount']}
-#
-#     return render(request, 'FinancerApp/index.html', {'transactions_per_day': transactions_per_day})
+
 
 @login_required(login_url='login')
 def profile(request):
@@ -127,11 +108,11 @@ def get_transactions_per_day(user):
     return transactions_per_day
 
 def get_transactions_per_year(user):
-    # Получаем сумму доходов и расходов за каждый год
+
     incomes_per_year = Income.objects.filter(user=user).annotate(year=TruncYear('date')).values('year').annotate(total_amount=Sum('amount'))
     expenses_per_year = Expense.objects.filter(user=user).annotate(year=TruncYear('date')).values('year').annotate(total_amount=Sum('amount'))
 
-    # Создаем словарь, в котором ключами будут годы, а значениями будут суммы доходов и расходов за каждый год
+
     transactions_per_year = {}
     for income in incomes_per_year:
         transactions_per_year[income['year']] = {'income': income['total_amount'], 'expense': 0}
@@ -145,45 +126,44 @@ def get_transactions_per_year(user):
     return transactions_per_year
 
 def get_transactions_history(user):
-    # Получаем все транзакции пользователя отсортированные по дням
+
     incomes = Income.objects.filter(user=user).order_by('date')
     expenses = Expense.objects.filter(user=user).order_by('date')
 
-    # Добавляем метку "Тип" к каждой транзакции
+
     for income in incomes:
         income.type = 'Доход'
     for expense in expenses:
         expense.type = 'Расход'
 
-    # Слияние доходов и расходов в один список и сортировка по дате
     transactions_history = list(incomes) + list(expenses)
     transactions_history.sort(key=lambda x: x.date)
 
     return transactions_history
-@login_required(login_url='login')
-def edit_transaction(request, transaction_id):
-    income = get_object_or_404(Income, pk=transaction_id)
-    expense = get_object_or_404(Expense, pk=transaction_id)
 
+
+def edit_income(request, income_id):
+    income = get_object_or_404(Income, pk=income_id)
     if request.method == 'POST':
-        if 'income_id' in request.POST:
-            form = IncomeForm(request.POST, instance=income)
-            if form.is_valid():
-                form.save()
-                return redirect('profile')
-        elif 'expense_id' in request.POST:
-            form = ExpenseForm(request.POST, instance=expense)
-            if form.is_valid():
-                form.save()
-                return redirect('profile')
+        form = IncomeForm(request.POST, instance=income)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
     else:
-        if income:
-            form = IncomeForm(instance=income)
-        else:
-            form = ExpenseForm(instance=expense)
-
+        form = IncomeForm(instance=income)
     return render(request, 'FinancerApp/edit_transaction.html', {'form': form})
 
+def edit_expense(request, expense_id):
+    expense = get_object_or_404(Expense, pk=expense_id)
+    if request.method == 'POST':
+        form = ExpenseForm(request.POST, instance=expense)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ExpenseForm(instance=expense)
+    return render(request, 'FinancerApp/edit_transaction.html', {'form': form})
+@login_required(login_url='login')
 def create_income(request):
     if request.method == 'POST':
         form = IncomeForm(request.POST)
@@ -196,6 +176,7 @@ def create_income(request):
         form = IncomeForm()
     return render(request, 'FinancerApp/create_income.html', {'form': form})
 
+@login_required(login_url='login')
 def create_expense(request):
     if request.method == 'POST':
         form = ExpenseForm(request.POST)

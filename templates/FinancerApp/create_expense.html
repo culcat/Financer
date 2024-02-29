@@ -10,19 +10,24 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <input type="number" name="amount" placeholder="Сумма" class="form-control">
-                        </div>
+                        </div><br>
                         <div class="form-group">
                             <input name="category" placeholder="Категория" class="form-control">
                             
-                        </div>
+                        </div><br>
                         <div class="form-group">
                             <input name="description" placeholder="Описание" class="form-control">
                             
-                        </div> 
-                        <button class="btn btn-primary btn-block" type="submit">Отправить</button>
+                        </div> <br>
+                        <button class="btn btn-primary btn-block" onclick="noti()" type="submit">Отправить</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function noti() {
+        alert('Расход записан')
+    }
+</script>

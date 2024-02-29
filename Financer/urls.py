@@ -28,5 +28,6 @@ urlpatterns = [
     path('income/add',create_income,name='create_income'),
     path('expose/add',create_expense, name='create_expense'),
     path('', profile, name='profile'),
-    path('edit_transaction/<int:transaction_id>/', edit_transaction, name='edit_transaction'),
+    path('income/edit/<int:income_id>/', edit_income, name='edit_income'),
+    path('expense/edit/<int:expense_id>/', edit_expense, name='edit_expense'),
 ]

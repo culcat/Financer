@@ -11,8 +11,6 @@ class Income(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField(auto_now=True)
     description = models.CharField(max_length=100,blank=True)
-    def __str__(self):
-        return self
 
 
 
@@ -22,7 +20,5 @@ class Expense(models.Model):
     date = models.DateField(auto_now=True)
     category = models.CharField(max_length=150)
     description = models.CharField(max_length=100 ,blank=True)
-    def __str__(self):
-        return self
 
 
